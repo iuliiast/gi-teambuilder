@@ -16,7 +16,7 @@ const list122 = document.getElementById('list12-2');
 let userCharactersNames = [];
 let selectedCharacters = [];
 
-//Цикл генерации карточек персонажей
+//Generating character cards
 for (let i = 0; i < characters.length; i++) {
   charactersEl.innerHTML += `
 		<div class="card">
@@ -29,7 +29,7 @@ for (let i = 0; i < characters.length; i++) {
 	`;
 }
 
-//Клик на карту персонажа, добавление & удаление карты в массив персонажей пользователя
+//Click on card, add & delete card to user data
 const cards = document.querySelectorAll('.card');
 for (let card of cards) {
   card.addEventListener('click', function (event) {
@@ -40,7 +40,6 @@ for (let card of cards) {
       selectedCharacters = characters.filter((char) =>
         userCharactersNames.includes(char.name)
       );
-      //userCharsEl.innerHTML += `${name} `;
     } else {
       userCharactersNames = userCharactersNames.filter((char) => char !== name);
       card.style.background = 'transparent'; //unclick
@@ -80,9 +79,9 @@ const findResults = async function () {
       },
       body: JSON.stringify(data),
     };
-    //Отправка данных с браузера на сервер
+    //Send data from client to the server
     const res = await fetch('/api', options);
-    //Получаем данные с сервера на браузера
+    //Send data from server to the client
     const json = await res.json();
     const userTeams = json.userTeams;
     console.log('JSON:', userTeams);
@@ -128,93 +127,4 @@ resultsBtn.addEventListener('click', () => {
   list121.innerHTML = ``;
   list122.innerHTML = ``;
   findResults();
-});
-
-chooseAllBtn.addEventListener('click', function () {
-  for (let card of cards) {
-    let name = card.innerText;
-    card.style.background = 'linear-gradient(#ff7e5f, #feb47b)'; //clicked style
-    userCharactersNames.push(name);
-    // selectedCharacters = characters.filter((char) =>
-    //   userCharactersNames.includes(char.name)
-    // );
-    selectedCharacters = [
-      {
-        id: '8',
-        id_appsample: 10000039,
-        name: 'Diona',
-        main_role: 'Heal',
-        element: 'Cryo',
-      },
-      {
-        id: '9',
-        id_appsample: 10000031,
-        name: 'Fischl',
-        main_role: 'SupDD',
-        second_role: 'MainDD',
-        element: 'Electro',
-      },
-      {
-        id: '10',
-        id_appsample: 10000037,
-        name: 'Ganyu',
-        main_role: 'MainDD',
-        second_role: 'SupDD',
-        element: 'Cryo',
-      },
-      {
-        id: '11',
-        id_appsample: 10000046,
-        name: 'Hu Tao',
-        main_role: 'MainDD',
-        element: 'Pyro',
-      },
-      {
-        id: '17',
-        id_appsample: 10000041,
-        name: 'Mona',
-        main_role: 'SupDD',
-        second_role: 'MainDD',
-        element: 'Hydro',
-      },
-      {
-        id: '18',
-        id_appsample: 10000027,
-        name: 'Ningguang',
-        main_role: 'MainDD',
-        second_role: 'Support',
-        element: 'Geo',
-      },
-      {
-        id: '19',
-        id_appsample: 10000034,
-        name: 'Noelle',
-        main_role: 'MainDD',
-        second_role: 'Support',
-        element: 'Geo',
-      },
-      {
-        id: '26',
-        id_appsample: 10000022,
-        name: 'Venti',
-        main_role: 'SupDD',
-        element: 'Anemo',
-      },
-      {
-        id: '27',
-        id_appsample: 10000023,
-        name: 'Xiangling',
-        main_role: 'SupDD',
-        second_role: 'MainDD',
-        element: 'Pyro',
-      },
-      {
-        id: '28',
-        id_appsample: 10000026,
-        name: 'Xiao',
-        main_role: 'MainDD',
-        element: 'Anemo',
-      },
-    ];
-  }
 });

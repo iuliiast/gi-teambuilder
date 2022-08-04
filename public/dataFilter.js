@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import data from './data.json' assert { type: 'json' };
 
-//Массивы всех существующих команд по этажам бездны
+//Arrays of all existed teams
 const floor9_a = [];
 const floor9_b = [];
 const floor10_a = [];
@@ -11,7 +11,7 @@ const floor11_b = [];
 const floor12_a = [];
 const floor12_b = [];
 
-//Объект с массивами всех команд
+//Obj with arrays of all teams
 const sortedData = {
   floor9_a: floor9_a,
   floor9_b: floor9_b,
@@ -23,7 +23,7 @@ const sortedData = {
   floor12_b: floor12_b,
 };
 
-//Сортировка команд по этажам (все данные с дубликатами)
+//Sort teams by floor (with duplicates)
 data.map((el) => {
   for (const [key, value] of Object.entries(el)) {
     switch (key) {
@@ -47,13 +47,13 @@ data.map((el) => {
   }
 });
 
-//Функция, убирающая дубликаты команд
+//A function that removes duplicate commands
 const removeDublicates = (data) => {
   const arr = [];
   return data.filter((arr, (item) => !(arr[item] = item in arr)));
 };
 
-//Результат модуля - Убрать дубликаты у объекта sortedData
+//Result of module - Remove duplicates from the sortedData object
 export const dataByFloor = {};
 for (const [key, value] of Object.entries(sortedData)) {
   dataByFloor[key] = removeDublicates(value);
