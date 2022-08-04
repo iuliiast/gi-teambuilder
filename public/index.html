@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Genshin Impact Team Builder</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="/index.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <!--Main -->
+      <div class="description">
+        <h1>Build your Genshin Impact Team</h1>
+        <p>
+          Select characters that you have leveled up<br />
+          and get the right teams<br />
+          for Spiral Abyss (v2.0)
+        </p>
+        <button onclick="window.location.href='#results'" id="resultsBtn">
+          Find results
+        </button>
+        <button id="chooseAllBtn">Choose all</button>
+        <div id="loader" class="hide-loader"></div>
+      </div>
+      <!-- Список всех characters -->
+      <div id="characters-el" class="characters"></div>
+    </main>
+
+    <!-- Results section -->
+    <div id="results" class="container results section-hidden">
+      <div id="floor9" class="floor">
+        <div id="chamber9-1" class="chamber">
+          <h3>Floor 9 • First half</h3>
+          <div id="list9-1" class="list"></div>
+        </div>
+        <div id="chamber9-2" class="chamber">
+          <h3>Floor 9 • Second half</h3>
+          <div id="list9-2" class="list"></div>
+        </div>
+      </div>
+
+      <div id="floor10" class="floor">
+        <div id="chamber10-1" class="chamber">
+          <h3>Floor 10 • First half</h3>
+          <div id="list10-1" class="list"></div>
+        </div>
+        <div id="chamber10-2" class="chamber">
+          <h3>Floor 10 • Second half</h3>
+          <div id="list10-2" class="list"></div>
+        </div>
+      </div>
+
+      <div id="floor11" class="floor">
+        <div id="chamber11-1" class="chamber">
+          <h3>Floor 11 • First half</h3>
+          <div id="list11-1" class="list"></div>
+        </div>
+        <div id="chamber11-2" class="chamber">
+          <h3>Floor 11 • Second half</h3>
+          <div id="list11-2" class="list"></div>
+        </div>
+      </div>
+
+      <div id="floor12" class="floor">
+        <div id="chamber12-1" class="chamber">
+          <h3>Floor 12 • First half</h3>
+          <div id="list12-1" class="list"></div>
+        </div>
+        <div id="chamber12-2" class="chamber">
+          <h3>Floor 12 • Second half</h3>
+          <div id="list12-2" class="list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>
+        This site is not affiliated with miHoYo Co., Ltd. (HoYoverse). Genshin
+        Impact, game content and materials are trademarks and copyrights of
+        miHoYo.<br />
+        Data sourced from spiralabyss.org
+      </p>
+    </div>
+  </body>
+</html>
