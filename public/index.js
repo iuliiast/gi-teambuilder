@@ -1,4 +1,4 @@
-import characters from '/characters.js';
+import characters from './characters.js';
 
 const charactersEl = document.getElementById('characters-el');
 const resultsBtn = document.getElementById('resultsBtn');
