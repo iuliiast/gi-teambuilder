@@ -4,7 +4,7 @@ import express, { response } from 'express';
 import { dataByFloor } from './public/dataFilter.js';
 import characters from './public/characters.js';
 const app = express();
-const port = 443;
+const port = process.env.PORT || 443;
 app.use(cors());
 app.use(helmet());
 
