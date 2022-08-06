@@ -1,10 +1,12 @@
 import cors from 'cors';
+import helmet from 'helmet';
 import express, { response } from 'express';
 import { dataByFloor } from './public/dataFilter.js';
 import characters from './public/characters.js';
 const app = express();
 const port = 443;
 app.use(cors());
+app.use(helmet());
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}!`);
