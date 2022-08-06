@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import data from './data.json' assert { type: 'json' };
 
 //Arrays of all existed teams
