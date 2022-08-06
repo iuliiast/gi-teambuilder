@@ -19,7 +19,7 @@ app.post('/api', (req, res) => {
   //req - получили запрос(данные)
   console.log(req.body);
   //Завершение: или заканчиваем или отправляем ответ
-  // res.end(); - закончить post
+  //res.end(); - закончить post
   //res.json(); - отправляем данные (объект) обратно
   const selectedCharacters = req.body;
   const userTeams = findTeams(dataByFloor, selectedCharacters);
