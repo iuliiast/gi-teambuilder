@@ -2,7 +2,6 @@ import characters from './characters.js';
 
 const charactersEl = document.getElementById('characters-el');
 const resultsBtn = document.getElementById('resultsBtn');
-const chooseAllBtn = document.getElementById('chooseAllBtn');
 const loader = document.getElementById('loader');
 const list91 = document.getElementById('list9-1');
 const list92 = document.getElementById('list9-2');
@@ -80,7 +79,7 @@ const findResults = async function () {
       body: JSON.stringify(data),
     };
     //Send data from client to the server
-    const res = await fetch('/api', options);
+    const res = await fetch('/', options);
     //Send data from server to the client
     const json = await res.json();
     const userTeams = json.userTeams;
