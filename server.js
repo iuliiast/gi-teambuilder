@@ -2,33 +2,17 @@ import cors from 'cors';
 import helmet from 'helmet';
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-
 import { dataByFloor } from './public/dataFilter.js';
 import characters from './public/characters.js';
-
-dotenv.config({ path: './config.env' });
 const app = express();
 const port = process.env.PORT || 443;
 app.use(cors());
 app.use(helmet());
 
-//Connect the database to server using Mongoose
-const mongoString = process.env.ATLAS_URI;
-mongoose.connect(mongoString);
-const database = mongoose.connection;
-database.on('error', (error) => {
-  console.log(error);
-});
-database.once('connected', () => {
-  console.log('Database Connected');
-});
-
 //Серверная часть
 app.listen(port, () => {
   console.log(`Listening on port ${port}!`);
 });
-
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 //Получаем данные с браузера на сервер.
