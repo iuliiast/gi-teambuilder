@@ -1,22 +1,22 @@
 import cors from 'cors';
-import helmet from 'helmet';
 import express from 'express';
-import mongoose from 'mongoose';
+import server from 'express';
 import { dataByFloor } from './public/dataFilter.js';
 import characters from './public/characters.js';
+
 const app = express();
 const port = process.env.PORT || 443;
 app.use(cors());
-app.use(helmet());
 
 //Серверная часть
+const routerIndex = server.Router();
 app.listen(port, () => {
   console.log(`Listening on port ${port}!`);
 });
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 //Получаем данные с браузера на сервер.
-app.post('/', (req, res) => {
+routerIndex.post('/', (req, res) => {
   console.log('I got the request!');
   //req - получили запрос(данные)
   console.log(req.body);
@@ -31,7 +31,7 @@ app.post('/', (req, res) => {
     userTeams: userTeams,
   });
 });
-
+app.use('/', routerIndex);
 //Функция, кот. находит команды
 function findTeams(obj, chars) {
   const mappedId = chars.map((char) => char.id_appsample);

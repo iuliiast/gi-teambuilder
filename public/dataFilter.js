@@ -57,3 +57,5 @@ export const dataByFloor = {};
 for (const [key, value] of Object.entries(sortedData)) {
   dataByFloor[key] = removeDublicates(value);
 }
+
+data.filter((value, index, array) => array[array.indexOf(value)] === index);
