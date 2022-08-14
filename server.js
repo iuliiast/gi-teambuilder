@@ -10,13 +10,13 @@ app.use(cors());
 
 //Серверная часть
 const routerIndex = server.Router();
-app.listen(port, () => {
+app.listen(port, function () {
   console.log(`Listening on port ${port}!`);
 });
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 //Получаем данные с браузера на сервер.
-routerIndex.post('/', (req, res) => {
+routerIndex.post('/', function (req, res) {
   console.log('I got the request!');
   //req - получили запрос(данные)
   console.log(req.body);
