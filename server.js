@@ -1,4 +1,3 @@
-import cors from 'cors';
 import express from 'express';
 import server from 'express';
 import { dataByFloor } from './public/dataFilter.js';
@@ -6,7 +5,6 @@ import characters from './public/characters.js';
 
 const app = express();
 const port = process.env.PORT || 443;
-app.use(cors());
 
 //Серверная часть
 const routerIndex = server.Router();
