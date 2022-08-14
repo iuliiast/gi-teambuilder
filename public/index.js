@@ -31,7 +31,7 @@ for (let i = 0; i < characters.length; i++) {
 //Click on card, add & delete card to user data
 const cards = document.querySelectorAll('.card');
 for (let card of cards) {
-  card.addEventListener('click', function (event) {
+  card.addEventListener('touchstart', function (event) {
     card.style.background = 'linear-gradient(#ff7e5f, #feb47b)'; //clicked style
     let name = card.innerText;
     if (!userCharactersNames.includes(name)) {
@@ -116,7 +116,7 @@ const findResults = async function () {
   }
 };
 
-resultsBtn.addEventListener('click', () => {
+resultsBtn.addEventListener('touchstart', () => {
   list91.innerHTML = ``;
   list92.innerHTML = ``;
   list101.innerHTML = ``;
