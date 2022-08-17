@@ -5,14 +5,13 @@ import characters from './public/characters.js';
 
 const app = express();
 const port = process.env.PORT || 443;
-
-//Серверная часть
 const routerIndex = server.Router();
 app.listen(port, function () {
   console.log(`Listening on port ${port}!`);
 });
 app.use(express.static('public'));
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json());
+app.use('/', routerIndex);
 //Получаем данные с браузера на сервер.
 routerIndex.post('/', function (req, res) {
   console.log('I got the request!');
@@ -29,7 +28,6 @@ routerIndex.post('/', function (req, res) {
     userTeams: userTeams,
   });
 });
-app.use('/', routerIndex);
 //Функция, кот. находит команды
 function findTeams(obj, chars) {
   const mappedId = chars.map((char) => char.id_appsample);
