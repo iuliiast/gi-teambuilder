@@ -1,4 +1,4 @@
-import data from './data.json' assert { type: 'json' };
+import data from "../data/data.json" assert { type: "json" };
 
 //Arrays of all existed teams
 const floor9_a = [];
@@ -26,22 +26,30 @@ const sortedData = {
 data.map((el) => {
   for (const [key, value] of Object.entries(el)) {
     switch (key) {
-      case 'f9_1_a':
+      case "f9_1_a":
         floor9_a.push(value);
-      case 'f9_1_b':
+        break;
+      case "f9_1_b":
         floor9_b.push(value);
-      case 'f10_1_a':
+        break;
+      case "f10_1_a":
         floor10_a.push(value);
-      case 'f10_1_b':
+        break;
+      case "f10_1_b":
         floor10_b.push(value);
-      case 'f11_1_a':
+        break;
+      case "f11_1_a":
         floor11_a.push(value);
-      case 'f11_1_b':
+        break;
+      case "f11_1_b":
         floor11_b.push(value);
-      case 'f12_1_a':
+        break;
+      case "f12_1_a":
         floor12_a.push(value);
-      case 'f12_1_b':
+        break;
+      case "f12_1_b":
         floor12_b.push(value);
+        break;
     }
   }
 });
@@ -57,5 +65,3 @@ export const dataByFloor = {};
 for (const [key, value] of Object.entries(sortedData)) {
   dataByFloor[key] = removeDublicates(value);
 }
-
-data.filter((value, index, array) => array[array.indexOf(value)] === index);

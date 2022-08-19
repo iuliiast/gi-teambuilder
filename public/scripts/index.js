@@ -1,16 +1,15 @@
-import characters from './characters.js';
-
-const charactersEl = document.getElementById('characters-el');
-const resultsBtn = document.getElementById('resultsBtn');
-const loader = document.getElementById('loader');
-const list91 = document.getElementById('list9-1');
-const list92 = document.getElementById('list9-2');
-const list101 = document.getElementById('list10-1');
-const list102 = document.getElementById('list10-2');
-const list111 = document.getElementById('list11-1');
-const list112 = document.getElementById('list11-2');
-const list121 = document.getElementById('list12-1');
-const list122 = document.getElementById('list12-2');
+import characters from "../../data/characters.js";
+const charactersEl = document.getElementById("characters-el");
+const resultsBtn = document.getElementById("resultsBtn");
+const loader = document.getElementById("loader");
+const list91 = document.getElementById("list9-1");
+const list92 = document.getElementById("list9-2");
+const list101 = document.getElementById("list10-1");
+const list102 = document.getElementById("list10-2");
+const list111 = document.getElementById("list11-1");
+const list112 = document.getElementById("list11-2");
+const list121 = document.getElementById("list12-1");
+const list122 = document.getElementById("list12-2");
 
 let userCharactersNames = [];
 let selectedCharacters = [];
@@ -20,31 +19,25 @@ for (let i = 0; i < characters.length; i++) {
   charactersEl.innerHTML += `
 		<div class="card">
 			<img
-			src="assets/${characters[i]['name']}.png"
+			src="../../images/${characters[i]["name"]}.png"
 			alt="character-pic"
 			class="card-pic"/>
-			<p class="card-name">${characters[i]['name']}</p>
+			<p class="card-name">${characters[i]["name"]}</p>
 		</div>
 	`;
 }
 
 //Click on card, add & delete card to user data
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll(".card");
 for (let card of cards) {
-  card.addEventListener('click', function (event) {
-    card.style.background = 'linear-gradient(#ff7e5f, #feb47b)'; //clicked style
-    let name = card.innerText;
+  card.addEventListener("click", function (event) {
+    card.style.background = "linear-gradient(#ff7e5f, #feb47b)"; //clicked style
+    let name = card.textContent.trim();
     if (!userCharactersNames.includes(name)) {
       userCharactersNames.push(name);
-      selectedCharacters = characters.filter((char) =>
-        userCharactersNames.includes(char.name)
-      );
     } else {
       userCharactersNames = userCharactersNames.filter((char) => char !== name);
-      card.style.background = 'transparent'; //unclick
-      selectedCharacters = characters.filter((char) =>
-        userCharactersNames.includes(char.name)
-      );
+      card.style.background = "transparent"; //unclick
     }
   });
 }
@@ -54,37 +47,40 @@ const makeTeam = (team) => {
 	${team
     .map((name) => {
       return `<div class="small-card">
-		<img src="assets/${name}.png"
+		<img src="../../images/${name}.png"
 		alt="char-pic" />
 		</div>
 		`;
     })
-    .join('')}
+    .join("")}
 	</div>
 	`;
 };
 
 //Find results (button)
 const findResults = async function () {
+  selectedCharacters = characters.filter((char) =>
+    userCharactersNames.includes(char.name)
+  );
   if (userCharactersNames.length === 0) {
     alert(`You haven't chosen anyone.`);
   } else {
-    loader.classList.replace('hide-loader', 'loader');
+    loader.classList.replace("hide-loader", "loader");
     const data = selectedCharacters;
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     };
     //Send data from client to the server
-    const res = await fetch('/', options);
+    const res = await fetch("/", options);
     //Send data from server to the client
     const json = await res.json();
     const userTeams = json.userTeams;
-    console.log('JSON:', userTeams);
-    loader.classList.replace('loader', 'hide-loader');
+    console.log("JSON:", userTeams);
+    loader.classList.replace("loader", "hide-loader");
     userTeams.floor9_a.map((team) => {
       list91.innerHTML += makeTeam(team);
     });
@@ -109,14 +105,14 @@ const findResults = async function () {
     userTeams.floor12_b.map((team) => {
       list122.innerHTML += makeTeam(team);
     });
-    results.classList.replace('section-hidden', 'section-visible');
+    results.classList.replace("section-hidden", "section-visible");
     results.scrollIntoView({
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }
 };
 
-resultsBtn.addEventListener('click', function (event) {
+resultsBtn.addEventListener("click", () => {
   list91.innerHTML = ``;
   list92.innerHTML = ``;
   list101.innerHTML = ``;
