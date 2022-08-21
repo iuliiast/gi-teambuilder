@@ -18,6 +18,21 @@ html, body {
 
 /* FONTS */
 
+@media screen and (min-width: 620px){
+	h1, h3 {
+		font-size: 5vw;
+	}
+	p {
+		font-size: 3vw;
+	}
+}
+
+@media screen and (min-width: 768px){
+	p {
+		font-size: 2vw;
+	}
+}
+
 h1, h3 {
 	font-family: 'Inter', sans-serif;        
 }
@@ -29,15 +44,6 @@ h1 {
 
 p {
   font-size: 1.1rem;
-}
-
-@media screen and (max-width: 768px){
-	h1, h3 {
-		font-size: 5vw;
-	}
-	p {
-		font-size: 3vw;
-	}
 }
 
 /*FIND RESULTS BUTTON*/
@@ -162,6 +168,13 @@ main {
     background: linear-gradient(#ff7e5f, #feb47b);
     transform: scale(1.05);
 		cursor: pointer;
+}
+
+@media screen and (max-width: 420px) {
+	.card:hover,
+	.card:focus {
+		transform: none;
+	}
 }
 
 .card img {
