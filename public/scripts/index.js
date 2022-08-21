@@ -57,6 +57,10 @@ const makeTeam = (team) => {
 	`;
 };
 
+const isEmpty = (obj) => {
+  return Object.keys(obj).every((key) => obj[key].length === 0);
+};
+
 //Find results (button)
 const findResults = async function () {
   selectedCharacters = characters.filter((char) =>
@@ -80,35 +84,41 @@ const findResults = async function () {
     const json = await res.json();
     const userTeams = json.userTeams;
     console.log("JSON:", userTeams);
-    loader.classList.replace("loader", "hide-loader");
-    userTeams.floor9_a.map((team) => {
-      list91.innerHTML += makeTeam(team);
-    });
-    userTeams.floor9_b.map((team) => {
-      list92.innerHTML += makeTeam(team);
-    });
-    userTeams.floor10_a.map((team) => {
-      list101.innerHTML += makeTeam(team);
-    });
-    userTeams.floor10_b.map((team) => {
-      list102.innerHTML += makeTeam(team);
-    });
-    userTeams.floor11_a.map((team) => {
-      list111.innerHTML += makeTeam(team);
-    });
-    userTeams.floor11_b.map((team) => {
-      list112.innerHTML += makeTeam(team);
-    });
-    userTeams.floor12_a.map((team) => {
-      list121.innerHTML += makeTeam(team);
-    });
-    userTeams.floor12_b.map((team) => {
-      list122.innerHTML += makeTeam(team);
-    });
-    results.classList.replace("section-hidden", "section-visible");
-    results.scrollIntoView({
-      behavior: "smooth",
-    });
+    if (isEmpty(userTeams)) {
+      alert(`Sorry, there are no teams. Please select more characters.`);
+      loader.classList.replace("loader", "hide-loader");
+    } else {
+      loader.classList.replace("hide-loader", "loader");
+      userTeams.floor9_a.map((team) => {
+        list91.innerHTML += makeTeam(team);
+      });
+      userTeams.floor9_b.map((team) => {
+        list92.innerHTML += makeTeam(team);
+      });
+      userTeams.floor10_a.map((team) => {
+        list101.innerHTML += makeTeam(team);
+      });
+      userTeams.floor10_b.map((team) => {
+        list102.innerHTML += makeTeam(team);
+      });
+      userTeams.floor11_a.map((team) => {
+        list111.innerHTML += makeTeam(team);
+      });
+      userTeams.floor11_b.map((team) => {
+        list112.innerHTML += makeTeam(team);
+      });
+      userTeams.floor12_a.map((team) => {
+        list121.innerHTML += makeTeam(team);
+      });
+      userTeams.floor12_b.map((team) => {
+        list122.innerHTML += makeTeam(team);
+      });
+      results.classList.replace("section-hidden", "section-visible");
+      results.scrollIntoView({
+        behavior: "smooth",
+      });
+      loader.classList.replace("loader", "hide-loader");
+    }
   }
 };
 

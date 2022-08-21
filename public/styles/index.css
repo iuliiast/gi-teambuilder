@@ -18,7 +18,7 @@ html, body {
 
 /* FONTS */
 
-@media screen and (min-width: 620px){
+@media screen and (max-width: 620px){
 	h1, h3 {
 		font-size: 5vw;
 	}
@@ -27,7 +27,7 @@ html, body {
 	}
 }
 
-@media screen and (min-width: 768px){
+@media screen and (max-width: 768px){
 	p {
 		font-size: 2vw;
 	}
