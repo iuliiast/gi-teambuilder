@@ -115,7 +115,7 @@ main {
 .footer {
 	background: black;
 	width: auto;
-	margin: 0;
+	margin-top: auto;
 	padding-left: 3rem;
 }
 
