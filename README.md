@@ -1,5 +1,5 @@
 # Genshin Impact Teambuilder
-https://gi-teambuilder.herokuapp.com/
+https://gi-teambuilder.up.railway.app/
 
 <p>Genshin Impact Teambuilder helps to make teams of those characters that you have.<br/>
 Select characters that you have leveled up and get the right teams for Spiral Abyss (v2.0).</p>
